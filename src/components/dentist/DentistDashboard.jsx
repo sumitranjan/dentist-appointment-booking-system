@@ -1,17 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { supabase } from "../services/supabaseClient";
-import { AuthContext } from "../context/AuthContext";
+import { supabase } from "../../services/supabaseClient";
+import { AuthContext } from "../../context/AuthContext";
 import DentistWeeklyAppointmentView from "./DentistWeeklyAppointmentView";
-
-const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+import { days } from "../../utils/utils";
 
 export default function DentistDashboard() {
   const [currentDate, setCurrentDate] = useState(new Date());

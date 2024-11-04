@@ -22,7 +22,7 @@ const AddService = () => {
         },
       ]);
 
-      if (!error) throw error;
+      if (error) throw error;
 
       // Reset form and navigate to dashboard on success
       setServiceName("");
@@ -30,7 +30,7 @@ const AddService = () => {
       alert("Service added successfully.");
     } catch (error) {
       console.error("Error adding service:", error);
-      alert(error);
+      alert("Error adding service:", error);
     } finally {
       setLoading(false);
     }

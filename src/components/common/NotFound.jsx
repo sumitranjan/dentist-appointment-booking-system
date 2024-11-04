@@ -4,7 +4,7 @@ const NotFound = () => {
   const navigate = useNavigate();
 
   const handleHomeRedirect = () => {
-    navigate("/customer/login");
+    navigate("/");
   };
 
   return (

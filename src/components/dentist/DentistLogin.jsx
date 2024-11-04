@@ -1,40 +1,27 @@
-// src/components/CustomerLogin.js
 import { useState, useContext, useEffect } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const CustomerLogin = () => {
+const DentistLogin = () => {
   const { login, user, role } = useContext(AuthContext);
-  //   console.log("login:", login);
+  console.log("dentist login: user", user, role);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  console.log("login: user", user, role);
   const [loading, setLoading] = useState(false);
 
-  //   if (user && role == "customer") {
-  //     navigate("/customer/dashboard");
-  //   }
-  // Move navigation logic to useEffect to avoid triggering it during render
   useEffect(() => {
-    console.log("useEffect customer login ");
-    if (user && role === "customer") {
-      navigate("/customer/dashboard");
+    if (user && role === "dentist") {
+      navigate("/dentist/dashboard");
     }
-    // if (user && role !== "customer") {
-    //   alert("You are not authorize to login with current role", role);
-    //   //   navigate("/customer/dashboard");
-    // }
   }, [user, role, navigate]);
 
   const handleSubmit = async (e) => {
-    setLoading(true);
-    console.log("customer login submit", email, password);
-
+    setLoading;
     e.preventDefault();
     try {
       await login(email, password);
-      navigate("/customer/dashboard");
+      navigate("/dentist/dashboard");
     } catch (error) {
       console.error("Login error:", error);
     } finally {
@@ -44,9 +31,9 @@ const CustomerLogin = () => {
 
   return (
     <div className="min-h-screen bg-white-900  flex items-center justify-center">
-      <div className="bg-white rounded-2xl border-solid border-2 p-8 w-full max-w-md mx-4">
+      <div className="bg-white rounded-2xl border-solid border-2  p-8 w-full max-w-md mx-4">
         <div className="text-center mb-8">
-          <h1 className="text-xl font-semibold text-gray-700">Login</h1>
+          <h1 className="text-xl font-semibold text-gray-500">LOGO</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -100,7 +87,6 @@ const CustomerLogin = () => {
             >
               Forgot password
             </a>
-            {/* <p className="text-sm text-gray-500"> Forgot password</p> */}
           </div>
         </form>
       </div>
@@ -108,12 +94,4 @@ const CustomerLogin = () => {
   );
 };
 
-export default CustomerLogin;
-
-// import Login from "./common/Login";
-
-// const CustomerLogin = () => (
-//   <Login role="customer" redirectPath="/customer/dashboard" />
-// );
-
-// export default CustomerLogin;
+export default DentistLogin;

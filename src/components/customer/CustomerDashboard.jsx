@@ -1,30 +1,10 @@
 import { useState, useEffect, useContext, useMemo } from "react";
-import { supabase } from "../services/supabaseClient";
-import { AuthContext } from "../context/AuthContext";
+import { supabase } from "../../services/supabaseClient";
+import { AuthContext } from "../../context/AuthContext";
 import PaymentForm from "./PaymentForm";
 import { PaymentSuccess } from "./PaymentSuccess";
 
-const timeSlots = [
-  "08:30 AM",
-  "09:00 AM",
-  "09:30 AM",
-  "10:00 AM",
-  "10:30 AM",
-  "11:00 AM",
-  "11:30 AM",
-  "12:00 PM",
-  "12:30 PM",
-  "01:00 PM",
-  "01:30 PM",
-  "02:00 PM",
-  "02:30 PM",
-  "03:00 PM",
-  "03:30 PM",
-  "04:00 PM",
-  "04:30 PM",
-  "05:00 PM",
-  "05:30 PM",
-];
+import { timeSlots } from "../../utils/utils";
 
 export default function CustomerDashboard() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -147,7 +127,6 @@ export default function CustomerDashboard() {
 
     if (hasError) return;
 
-    alert("Booking confirmed!");
     setIsModalOpen((isModalOpen) => !isModalOpen);
     setShowPayment(true);
     console.log("selectedDate", selectedDate);
@@ -401,7 +380,6 @@ export default function CustomerDashboard() {
               <div className="text-center font-semibold">Thu</div>
               <div className="text-center font-semibold">Fri</div>
               <div className="text-center font-semibold">Sat</div>
-              {console.log("render:", renderCalendar())}
               {renderCalendar()}
             </div>
           </div>

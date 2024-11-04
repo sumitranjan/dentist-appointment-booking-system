@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { supabase } from "../services/supabaseClient";
+import { supabase } from "../../services/supabaseClient";
 
 export default function PaymentForm({
   onCancel,

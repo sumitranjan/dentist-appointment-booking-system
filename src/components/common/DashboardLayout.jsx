@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
+import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const DashboardLayout = () => {
-  const { role } = useContext(AuthContext);
+  const { role, logout } = useContext(AuthContext);
 
   const getNavItems = () => {
     switch (role) {
@@ -38,9 +38,9 @@ const DashboardLayout = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <Header />
+      <Navbar />
       <div className="flex">
-        <Sidebar navItems={navItems} />
+        <Sidebar navItems={navItems} logout={logout} />
         <main className="flex-1 p-4">
           <Outlet />
         </main>

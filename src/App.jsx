@@ -2,19 +2,20 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import AdminLogin from "./components/admin/AdminLogin";
-import CustomerLogin from "./components/CustomerLogin";
-import DentistLogin from "./components/DentistLogin";
-import ProtectedRoute from "./components/ProtectedRoute";
+import CustomerLogin from "./components/customer/CustomerLogin";
+import DentistLogin from "./components/dentist/DentistLogin";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 import AdminDashboard from "./components/admin/AdminDashboard"; // Create this component
-import CustomerDashboard from "./components/CustomerDashboard"; // Create this component
-import DentistDashboard from "./components/DentistDashboard"; // Create this component
-import Unauthorized from "./components/Unauthorized"; // Create this component
-import DashboardLayout from "./components/DashboardLayout";
-import BookingHistory from "./components/BookingHistory";
+import CustomerDashboard from "./components/customer/CustomerDashboard"; // Create this component
+import DentistDashboard from "./components/dentist/DentistDashboard"; // Create this component
+import Unauthorized from "./components/common/Unauthorized"; // Create this component
+import DashboardLayout from "./components/common/DashboardLayout";
+import BookingHistory from "./components/customer/BookingHistory";
 import AddServices from "./components/admin/AddService";
 import ViewReports from "./components/admin/ViewReports";
 import AddDentist from "./components/admin/AddDentist";
 import CustomerRegister from "./components/customer/CustomerRegister";
+import HomePage from "./components/common/HomePage";
 import NotFound from "./components/common/NotFound";
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<CustomerLogin />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/customer/login" element={<CustomerLogin />} />
           <Route path="/customer/register" element={<CustomerRegister />} />
           <Route path="/admin/login" element={<AdminLogin />} />

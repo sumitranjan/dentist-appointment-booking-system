@@ -46,7 +46,7 @@ const AddDentist = () => {
           dentist_id: authData.user.id,
           full_name: formData.fullName,
           // email: formData.email,
-          mobile_no: formData.mobileNo,
+          mobile_no: parseInt(formData.mobileNo),
           gender: formData.gender,
           hourly_fee: parseInt(formData.hourlyRate),
         },
@@ -126,7 +126,7 @@ const AddDentist = () => {
                   <input
                     id="mobileNo"
                     name="mobileNo"
-                    type="tel"
+                    type="number"
                     value={formData.mobileNo}
                     onChange={handleChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"

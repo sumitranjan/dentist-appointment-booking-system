@@ -211,8 +211,6 @@ export default function CustomerDashboard() {
   }, [selectedDate, selectedDentist, allBookings]);
 
   const handlePaymentComplete = () => {
-    // Process the payment details and create appointment
-    // createAppointment(paymentDetails);
     console.log("handlePaymentComplete , setIsModalOpen", isModalOpen);
     setIsModalOpen(false);
 

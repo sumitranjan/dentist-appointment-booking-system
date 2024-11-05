@@ -1,11 +1,9 @@
-// src/components/AdminLogin.js
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const { login, user, role } = useContext(AuthContext);
-  //   console.log("login:", login);
   console.log("admin login: user", user, role);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

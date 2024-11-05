@@ -2,18 +2,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
-  const { user, name } = useContext(AuthContext);
-  console.log("Navbar Daschboard:", user);
+  const { name } = useContext(AuthContext);
+  // console.log("Navbar Daschboard:", user);
   return (
     <header className="bg-white shadow">
       <div className="max-w-9xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
           <div className="text-2xl font-bold">LOGO</div>
-          {/* <nav className="ml-10">
-              <a href="#" className="text-gray-900">
-                Dashboard
-              </a>
-            </nav> */}
         </div>
         <div className="flex items-center">
           <span className="mr-4">{name}</span>

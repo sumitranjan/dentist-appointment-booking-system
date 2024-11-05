@@ -4,8 +4,6 @@ import { LoaderCircle } from "lucide-react";
 
 function AdminDashboard() {
   const [appointments, setAppointments] = useState([]);
-  // const [serviceName, setServiceName] = useState("");
-  // const [servicePrice, setServicePrice] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -74,23 +72,6 @@ function AdminDashboard() {
 
   console.log("Admin appointments", appointments);
 
-  // async function handleAddService(e) {
-  //   e.preventDefault();
-  //   try {
-  //     const { error } = await supabase
-  //       .from("services")
-  //       .insert([{ name: serviceName, price: servicePrice }]);
-
-  //     if (error) throw error;
-
-  //     setServiceName("");
-  //     setServicePrice("");
-  //     alert("Service added successfully!");
-  //   } catch (error) {
-  //     console.error("Error adding service:", error);
-  //   }
-  // }
-
   return (
     <div className="flex min-h-screen bg-gray-50">
       <div className="flex-1">
@@ -98,9 +79,9 @@ function AdminDashboard() {
           <div>
             <div className="flex justify-between mb-4">
               <h1 className="text-xl">Dashboard</h1>
-              <button className="text-blue-600 hover:underline">
+              {/* <button className="text-blue-600 hover:underline">
                 View All
-              </button>
+              </button> */}
             </div>
             <div className="bg-white rounded-lg shadow">
               <table className="w-full">

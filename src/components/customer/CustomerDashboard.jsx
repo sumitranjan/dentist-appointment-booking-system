@@ -18,7 +18,6 @@ export default function CustomerDashboard() {
   const [bookings, setBookings] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const { user } = useContext(AuthContext);
-  console.log("Customer Daschboard:", user);
 
   const [bookAppointmentDetail, setBookAppointmentDetail] = useState({});
 

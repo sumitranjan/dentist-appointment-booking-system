@@ -2,15 +2,25 @@ import { useState, useEffect, useContext } from "react";
 import { supabase } from "../../services/supabaseClient";
 import { AuthContext } from "../../context/AuthContext";
 import DentistWeeklyAppointmentView from "./DentistWeeklyAppointmentView";
-import { days } from "../../utils/utils";
+
+const days = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
 
 export default function DentistDashboard() {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [appointments, setAppointments] = useState([]);
   const [showWeeklyView, setShowWeeklyView] = useState(false);
   const { user } = useContext(AuthContext);
   // console.log("user:", user);
+
+  console.log("Dental Dashboard:", appointments);
 
   useEffect(() => {
     fetchAppointments();
@@ -22,6 +32,8 @@ export default function DentistDashboard() {
         .from("appointments")
         .select("*")
         .eq("dentist_id", user.id);
+
+      console.log("Dental Dashboard: appointments", appointments);
 
       if (appointmentError) throw appointmentError;
 
@@ -50,20 +62,6 @@ export default function DentistDashboard() {
     } catch (error) {
       console.error("Error fetching appointments:", error);
     }
-  };
-
-  const handleAppointmentComplete = async (appointment) => {
-    const { error } = await supabase
-      .from("appointments")
-      .update({ status: "completed" })
-      .eq("appointment_id", appointment.appointment_id);
-
-    if (error) {
-      console.error("Error updating appointment:", error);
-      return;
-    }
-
-    await fetchAppointments();
   };
 
   const getTotalAppointments = () => {
@@ -138,11 +136,10 @@ export default function DentistDashboard() {
                 }`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setSelectedAppointment(appointment);
                   setShowWeeklyView(true);
                 }}
               >
-                {`${appointment.time_slot} - ${appointment.fullName}`}
+                {`${appointment.fullName} ${appointment.time_slot}`}
               </div>
             ))}
           </div>
@@ -154,18 +151,7 @@ export default function DentistDashboard() {
   };
 
   if (showWeeklyView) {
-    return (
-      <DentistWeeklyAppointmentView
-        selectedAppointment={selectedAppointment}
-        appointments={appointments}
-        onAppointmentComplete={handleAppointmentComplete}
-        onClose={() => {
-          setShowWeeklyView(false);
-          setSelectedAppointment(null);
-        }}
-      />
-      // <DentistWeeklyAppointmentView />
-    );
+    return <DentistWeeklyAppointmentView />;
   }
 
   return (

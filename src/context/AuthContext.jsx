@@ -21,43 +21,6 @@ export const AuthProvider = ({ children }) => {
     return storedName ? storedName : null;
   });
 
-  // const [loading, setLoading] = useState(true); // New loading state
-
-  // useEffect(() => {
-  //   console.log("Useeffect effect:");
-
-  //   // Check the session on component mount
-  //   const getUperProfile = async () => {
-  //     const session = await supabase.auth.getSession();
-  //     if (session.data.session) {
-  //       console.log("session effetc:", session);
-  //       console.log("useeffect id:", session.data.session.user.id);
-
-  //       setUser(session.data.session.user);
-  //       fetchUserProfile(session.data.session.user.id);
-  //     }
-
-  //     // Listen for changes in the auth state
-  //     const {
-  //       data: { subscription },
-  //     } = supabase.auth.onAuthStateChange(async (event, session) => {
-  //       if (session) {
-  //         console.log("session:", session);
-  //         setUser(session.user);
-  //         fetchUserProfile(session.user.id);
-  //       } else {
-  //         setUser(null);
-  //         setRole(null);
-  //       }
-  //       // setLoading(false); // Set loading to false when done
-  //     });
-
-  //     return () => {
-  //       subscription.unsubscribe();
-  //     };
-  //   };
-  //   getUperProfile();
-  // }, [role]);
   useEffect(() => {
     console.log("Running useEffect on mount");
 
@@ -71,29 +34,6 @@ export const AuthProvider = ({ children }) => {
         setUser(sessionData.session.user);
         await fetchUserProfile(sessionData.session.user.id);
       }
-
-      // // Listen for auth state changes
-      // const {
-      //   data: { subscription },
-      // } = supabase.auth.onAuthStateChange(async (event, session) => {
-      //   console.log("Auth state change detected:", event);
-
-      //   if (session) {
-      //     console.log("New session:", session);
-      //     setUser(session.user);
-      //     await fetchUserProfile(session.user.id);
-      //   } else {
-      //     console.log("No session found (user signed out)");
-      //     setUser(null);
-      //     setRole(null);
-      //   }
-      // });
-
-      // // Cleanup function to unsubscribe
-      // return () => {
-      //   console.log("Cleaning up subscription");
-      //   subscription.unsubscribe();
-      // };
     };
 
     // Call the async function

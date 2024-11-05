@@ -10,6 +10,8 @@ export default function BookingHistory() {
   const [services, setServices] = useState([]);
   const [bookings, setBookings] = useState([]);
 
+  console.log("BookingHistory: bookings", bookings);
+
   const formatDate = (date) => {
     return `${date.getDate()} ${date.toLocaleString("default", {
       month: "long",

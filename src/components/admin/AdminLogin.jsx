@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 const AdminLogin = () => {
   const { login, user, role } = useContext(AuthContext);
   console.log("admin login: user", user, role);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("asdf1234");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -51,6 +51,7 @@ const AdminLogin = () => {
               id="email"
               type="email"
               value={email}
+              placeholder="admin@gmail.com"
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required

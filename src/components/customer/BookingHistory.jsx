@@ -19,7 +19,9 @@ export default function BookingHistory() {
   };
 
   const weekEnd = new Date(historyWeekStart);
-  weekEnd.setDate(weekEnd.getDate());
+  // weekEnd.setDate(weekEnd.getDate() + 5);
+  console.log("weekEnd", weekEnd.setDate(weekEnd.getDate() + 5));
+
   const weekRange = `${formatDate(historyWeekStart)} - ${formatDate(
     weekEnd
   )} ${weekEnd.getFullYear()}`;
